@@ -9,6 +9,8 @@ import (
 type CLIConfig struct {
 	L1EthRpc string
 	RollupRpc string
+
+	L2OutputOracleAddress string
 }
 
 func checkRpcConfig(c string) error {
@@ -32,5 +34,6 @@ func NewConfig(c *cli.Context) *CLIConfig {
 	return &CLIConfig{
 		L1EthRpc: c.String(flags.L1EthRpcFlag.Name),
 		RollupRpc: c.String(flags.RollupRpcFlag.Name),
+		L2OutputOracleAddress: c.String(flags.L2OOAddressFlag.Name),
 	}
 }

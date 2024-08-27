@@ -25,7 +25,12 @@ var (
 		EnvVars: makeEnvVarName("ROLLUP_RPC"),
 	}
 
-	// Optional Flags
+	// Optional Flag
+	L2OOAddressFlag = &cli.StringFlag{
+		Name:    "l2oo-address",
+		Usage:   "Address of the L2OutputOracle contract",
+		EnvVars: makeEnvVarName("L2OO_ADDRESS"),
+	}
 )
 
 var requiredFlags = []cli.Flag{
@@ -33,11 +38,14 @@ var requiredFlags = []cli.Flag{
 	RollupRpcFlag,
 }
 
+var optionalFlags = []cli.Flag{
+	L2OOAddressFlag,
+}
+
 var Flags []cli.Flag
 
 func init() {
-	Flags = requiredFlags
-	// Flags = append(requiredFlags, optionalFlags...)
+	Flags = append(requiredFlags, optionalFlags...)
 }
 
 func CheckRequired(c *cli.Context) error {
